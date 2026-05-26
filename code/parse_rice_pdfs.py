@@ -2,17 +2,19 @@
 Parse OAE Thailand rice PDFs → clean CSV
 Handles split-number artifacts from PDF rendering.
 
-Files:
-  2565.pdf, 2566.pdf, 2567.pdf          → ข้าวนาปี  (main/wet season)
-  2565-1.pdf, 2566-1.pdf, 2567-1.pdf, 2568-1.pdf → ข้าวนาปรัง (dry/irrigated season)
+Input:  resources/data/OAE (20XX) [Main|Dry] Season.pdf
+Output: output/data/oae_provincial_rice_2022_2024.csv
 
-Output: resources/thailand_rice_provincial.csv
+Run from project root: python code/parse_rice_pdfs.py
 """
 
 import pdfplumber
 import pandas as pd
 import re
 import sys
+import os
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -215,21 +217,24 @@ def _make_row(name, nums, year_be, year_ce, season, path):
 
 
 # ── Run all files ─────────────────────────────────────────────────────────────
+PDF_DIR = os.path.join(_HERE, "..", "resources", "data")
+
 FILES = [
-    ("2565.pdf",   2565, "main"),
-    ("2566.pdf",   2566, "main"),
-    ("2567.pdf",   2567, "main"),
-    ("2565-1.pdf", 2565, "dry"),
-    ("2566-1.pdf", 2566, "dry"),
-    ("2567-1.pdf", 2567, "dry"),
-    ("2568-1.pdf", 2568, "dry"),
+    ("OAE (2022) Main Season.pdf", 2565, "main"),
+    ("OAE (2023) Main Season.pdf", 2566, "main"),
+    ("OAE (2024) Main Season.pdf", 2567, "main"),
+    ("OAE (2022) Dry Season.pdf",  2565, "dry"),
+    ("OAE (2023) Dry Season.pdf",  2566, "dry"),
+    ("OAE (2024) Dry Season.pdf",  2567, "dry"),
+    ("OAE (2025) Dry Season.pdf",  2568, "dry"),
 ]
 
 all_rows = []
 for fname, yr, season in FILES:
+    fpath = f"{PDF_DIR}/{fname}"
     print(f"Parsing {fname} ...", end=" ")
     try:
-        r = parse_pdf(fname, yr, season)
+        r = parse_pdf(fpath, yr, season)
         print(f"{len(r)} rows")
         all_rows.extend(r)
     except Exception as e:
@@ -246,7 +251,7 @@ df = df[df["province_th"].str.len() >= 3].copy()
 df = df.drop_duplicates(subset=["year_BE", "season", "province_th"])
 df = df.sort_values(["year_BE", "season", "province_th"]).reset_index(drop=True)
 
-out_path = "thailand_rice_provincial.csv"
+out_path = os.path.join(_HERE, "..", "output", "data", "oae_provincial_rice_2022_2024.csv")
 df.to_csv(out_path, index=False, encoding="utf-8-sig")
 print(f"\nSaved {len(df)} rows → {out_path}")
 print(df[["year_CE", "season", "province_en", "area_harvested_ha", "production_ton"]].head(15).to_string())
