@@ -39,13 +39,10 @@ desktop.ini
 resources/psd_alldata_csv/
 resources/gadm_THA/
 resources/gadm41_THA_shp.zip
-data/raw/gadm_THA/
+resources/data/gadm_THA/
 
-# Reference PDFs (cited in paper — see references section)
-resources/**/*.pdf
-resources/**/*.html
-resources/*.pdf
-resources/*.html
+# Literature/reference PDFs (local only — not source data)
+resources/literature/
 
 # Stale output files
 output/thailand_rice_provincial.csv

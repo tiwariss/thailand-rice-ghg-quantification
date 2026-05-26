@@ -30,7 +30,7 @@ GWP_CH4     = 28        # dimensionless (AR5; use 25 for AR4)
 # ─────────────────────────────────────────────────────────────
 # 2. LOAD & PARSE FAOSTAT CSV
 # ─────────────────────────────────────────────────────────────
-CSV_PATH = r"../data/raw/faostat_thailand_rice_1961_2024.csv"
+CSV_PATH = r"../resources/data/faostat_thailand_rice_1961_2024.csv"
 raw = pd.read_csv(CSV_PATH)
 
 # Keep only "Area harvested" rows (Element Code 5312)
@@ -103,8 +103,8 @@ out_cols = {
     "CO2e_Mt":  "CO2e_Emissions_Mt",
 }
 result_df = df[list(out_cols.keys())].rename(columns=out_cols)
-result_df.to_csv("../data/processed/thailand_rice_ghg_results.csv", index=False, float_format="%.4f")
-print("\n  Results saved → data/processed/thailand_rice_ghg_results.csv")
+result_df.to_csv("../output/data/thailand_rice_ghg_results.csv", index=False, float_format="%.4f")
+print("\n  Results saved → output/data/thailand_rice_ghg_results.csv")
 
 # ─────────────────────────────────────────────────────────────
 # 6. PLOTS
@@ -163,7 +163,7 @@ ax3.axhline(df["CO2e_Mt"].mean(), color="firebrick", linestyle="--", linewidth=1
 ax3.legend(fontsize=9)
 
 plt.tight_layout()
-plt.savefig("../figures/thailand_rice_ghg.png", dpi=150, bbox_inches="tight")
+plt.savefig("../output/figures/thailand_rice_ghg.png", dpi=150, bbox_inches="tight")
 plt.show()
-print("  Plot saved → figures/thailand_rice_ghg.png")
+print("  Plot saved → output/figures/thailand_rice_ghg.png")
 print("=" * 65)

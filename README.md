@@ -24,27 +24,28 @@ This study applies IPCC 2006 Tier 1 at two scales — a national time series (19
 ## Repository Structure
 
 ```
-├── data/
-│   ├── raw/
-│   │   ├── faostat_thailand_rice_1961_2024.csv   # FAOSTAT national harvested area & production
-│   │   ├── thailand_rice_price.csv               # Farm-gate paddy price 2007–2024
-│   │   ├── oni_growing_season.csv                # NOAA ONI climate index (growing season)
-│   │   └── gadm_THA/                             # GADM shapefiles (not in repo — download separately)
-│   └── processed/
+├── resources/
+│   └── data/
+│       ├── faostat_thailand_rice_1961_2024.csv   # FAOSTAT national harvested area & production
+│       ├── OAE (20XX) *.pdf                      # OAE seasonal source reports (raw)
+│       └── gadm_THA/                             # GADM shapefiles (not in repo — download separately)
+├── output/
+│   ├── figures/                                  # All output plots (PNG)
+│   └── data/
 │       ├── thailand_rice_ghg_results.csv         # National CH4 inventory output
 │       ├── thailand_rice_provincial_ghg.csv      # Provincial CH4 inventory output
 │       ├── oae_provincial_rice_2022_2024.csv     # OAE provincial data extracted from PDFs (77 provinces)
 │       ├── oae_raw_data.csv                      # OAE intermediate extraction output
-│       └── oae_rice_price_variety.xlsx           # OAE rice variety price table extracted from PDF
+│       ├── oae_rice_price_variety.xlsx           # OAE rice variety price table extracted from PDF
+│       ├── thailand_rice_price.csv               # Farm-gate paddy price (extracted from OAE PDF)
+│       └── oni_growing_season.csv                # NOAA ONI climate index (growing season)
 ├── src/
 │   ├── ghg_rice_thailand.py                      # National time-series analysis (1961–2024)
 │   └── parse_rice_pdfs.py                        # PDF parser for OAE seasonal reports
 ├── notebooks/
 │   └── ghg_spatial_analysis.ipynb               # Provincial spatial analysis + Monte Carlo
-├── figures/                                      # All output plots (PNG)
-├── paper/
-│   └── paper.pdf                                 # Full paper (22 pp.)
-└── workflow/                                     # Analysis workflow notes
+└── paper/
+    └── paper.pdf                                 # Full paper (22 pp.)
 ```
 
 ---
@@ -95,19 +96,19 @@ CH₄ = EFc × SFw × SFp × SFo × tp × Area × 10⁻⁶
 pandas numpy matplotlib geopandas scipy statsmodels pdfplumber jupyter
 ```
 
-**National analysis:**
+**1. Parse OAE PDFs → extracted CSVs:**
+```bash
+python src/parse_rice_pdfs.py
+```
+
+**2. National time-series analysis:**
 ```bash
 python src/ghg_rice_thailand.py
 ```
 
-**Provincial spatial analysis + Monte Carlo:**
+**3. Provincial spatial analysis + Monte Carlo:**
 ```bash
 jupyter notebook notebooks/ghg_spatial_analysis.ipynb
-```
-
-**Parse OAE PDF data:**
-```bash
-python src/parse_rice_pdfs.py
 ```
 
 ---
