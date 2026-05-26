@@ -39,13 +39,11 @@ This study applies IPCC 2006 Tier 1 at two scales — a national time series (19
 │       ├── oae_rice_price_variety.xlsx           # OAE rice variety price table extracted from PDF
 │       ├── thailand_rice_price.csv               # Farm-gate paddy price (extracted from OAE PDF)
 │       └── oni_growing_season.csv                # NOAA ONI climate index (growing season)
-├── src/
+├── code/
 │   ├── ghg_rice_thailand.py                      # National time-series analysis (1961–2024)
-│   └── parse_rice_pdfs.py                        # PDF parser for OAE seasonal reports
-├── notebooks/
+│   ├── parse_rice_pdfs.py                        # PDF parser for OAE seasonal reports
 │   └── ghg_spatial_analysis.ipynb               # Provincial spatial analysis + Monte Carlo
-└── paper/
-    └── paper.pdf                                 # Full paper (22 pp.)
+└── paper.pdf                                     # Full paper (22 pp.)
 ```
 
 ---
@@ -98,17 +96,17 @@ pandas numpy matplotlib geopandas scipy statsmodels pdfplumber jupyter
 
 **1. Parse OAE PDFs → extracted CSVs:**
 ```bash
-python src/parse_rice_pdfs.py
+python code/parse_rice_pdfs.py
 ```
 
 **2. National time-series analysis:**
 ```bash
-python src/ghg_rice_thailand.py
+python code/ghg_rice_thailand.py
 ```
 
 **3. Provincial spatial analysis + Monte Carlo:**
 ```bash
-jupyter notebook notebooks/ghg_spatial_analysis.ipynb
+jupyter notebook code/ghg_spatial_analysis.ipynb
 ```
 
 ---
