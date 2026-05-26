@@ -8,7 +8,7 @@ dist/
 build/
 .env
 
-# LaTeX
+# LaTeX build artifacts & source
 *.aux
 *.log
 *.out
@@ -23,6 +23,8 @@ build/
 *.nav
 *.snm
 *.vrb
+output/*.tex
+output/references.bib
 
 # OS
 .DS_Store
@@ -33,7 +35,14 @@ desktop.ini
 .vscode/
 *.swp
 
-# Large data files (excluded from git — download separately)
+# Large data files (download separately — see README)
 resources/psd_alldata_csv/
 resources/gadm_THA/
 resources/gadm41_THA_shp.zip
+
+# Reference PDFs (cited in paper — see references section)
+resources/*.pdf
+resources/*.html
+
+# AI workspace config
+CLAUDE.md
