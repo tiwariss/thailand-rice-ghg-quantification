@@ -40,9 +40,8 @@ This study applies IPCC 2006 Tier 1 at two scales — a national time series (19
 ├── output/
 │   └── figures/                                  # All output plots (PNG)
 ├── code/
-│   ├── ghg_rice_thailand.py                      # National time-series analysis (1961–2024)
-│   ├── parse_rice_pdfs.py                        # PDF parser for OAE seasonal reports
-│   └── ghg_spatial_analysis.ipynb               # Provincial spatial analysis + Monte Carlo
+│   ├── ghg_spatial_analysis.ipynb               # Full analysis: national inventory + provincial spatial + Monte Carlo
+│   └── parse_rice_pdfs.py                        # PDF parser for OAE seasonal reports
 └── paper.pdf                                     # Full paper (22 pp.)
 ```
 
@@ -99,12 +98,7 @@ pandas numpy matplotlib geopandas scipy statsmodels pdfplumber jupyter
 python code/parse_rice_pdfs.py
 ```
 
-**2. National time-series analysis:**
-```bash
-python code/ghg_rice_thailand.py
-```
-
-**3. Provincial spatial analysis + Monte Carlo:**
+**2. Run full analysis (national + provincial):**
 ```bash
 jupyter notebook code/ghg_spatial_analysis.ipynb
 ```
