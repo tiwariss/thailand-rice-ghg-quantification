@@ -163,7 +163,7 @@ ax3.axhline(df["CO2e_Mt"].mean(), color="firebrick", linestyle="--", linewidth=1
 ax3.legend(fontsize=9)
 
 plt.tight_layout()
-plt.savefig("thailand_rice_ghg.png", dpi=150, bbox_inches="tight")
+plt.savefig("../figures/thailand_rice_ghg.png", dpi=150, bbox_inches="tight")
 plt.show()
-print("  Plot saved → thailand_rice_ghg.png")
+print("  Plot saved → figures/thailand_rice_ghg.png")
 print("=" * 65)
