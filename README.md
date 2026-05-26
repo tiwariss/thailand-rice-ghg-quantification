@@ -27,15 +27,15 @@ This study applies IPCC 2006 Tier 1 at two scales — a national time series (19
 ├── data/
 │   ├── raw/
 │   │   ├── faostat_thailand_rice_1961_2024.csv   # FAOSTAT national harvested area & production
-│   │   ├── oae_provincial_rice_2022_2024.csv     # OAE provincial data (parsed, 77 provinces)
 │   │   ├── thailand_rice_price.csv               # Farm-gate paddy price 2007–2024
 │   │   ├── oni_growing_season.csv                # NOAA ONI climate index (growing season)
-│   │   ├── oae_raw_data.csv                      # Raw OAE Thai-language data
-│   │   ├── oae_rice_price_variety.xlsx           # OAE rice variety price table
 │   │   └── gadm_THA/                             # GADM shapefiles (not in repo — download separately)
 │   └── processed/
 │       ├── thailand_rice_ghg_results.csv         # National CH4 inventory output
-│       └── thailand_rice_provincial_ghg.csv      # Provincial CH4 inventory output
+│       ├── thailand_rice_provincial_ghg.csv      # Provincial CH4 inventory output
+│       ├── oae_provincial_rice_2022_2024.csv     # OAE provincial data extracted from PDFs (77 provinces)
+│       ├── oae_raw_data.csv                      # OAE intermediate extraction output
+│       └── oae_rice_price_variety.xlsx           # OAE rice variety price table extracted from PDF
 ├── src/
 │   ├── ghg_rice_thailand.py                      # National time-series analysis (1961–2024)
 │   └── parse_rice_pdfs.py                        # PDF parser for OAE seasonal reports
