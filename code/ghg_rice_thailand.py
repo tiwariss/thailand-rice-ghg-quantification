@@ -105,8 +105,8 @@ out_cols = {
     "CO2e_Mt":  "CO2e_Emissions_Mt",
 }
 result_df = df[list(out_cols.keys())].rename(columns=out_cols)
-result_df.to_csv(os.path.join(_HERE, "..", "output", "data", "thailand_rice_ghg_results.csv"), index=False, float_format="%.4f")
-print("\n  Results saved → output/data/thailand_rice_ghg_results.csv")
+result_df.to_csv(os.path.join(_HERE, "..", "resources", "clean", "thailand_rice_ghg_results.csv"), index=False, float_format="%.4f")
+print("\n  Results saved → resources/clean/thailand_rice_ghg_results.csv")
 
 # ─────────────────────────────────────────────────────────────
 # 6. PLOTS

@@ -251,7 +251,7 @@ df = df[df["province_th"].str.len() >= 3].copy()
 df = df.drop_duplicates(subset=["year_BE", "season", "province_th"])
 df = df.sort_values(["year_BE", "season", "province_th"]).reset_index(drop=True)
 
-out_path = os.path.join(_HERE, "..", "output", "data", "oae_provincial_rice_2022_2024.csv")
+out_path = os.path.join(_HERE, "..", "resources", "clean", "oae_provincial_rice_2022_2024.csv")
 df.to_csv(out_path, index=False, encoding="utf-8-sig")
 print(f"\nSaved {len(df)} rows → {out_path}")
 print(df[["year_CE", "season", "province_en", "area_harvested_ha", "production_ton"]].head(15).to_string())
