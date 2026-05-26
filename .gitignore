@@ -39,6 +39,7 @@ desktop.ini
 resources/psd_alldata_csv/
 resources/gadm_THA/
 resources/gadm41_THA_shp.zip
+data/raw/gadm_THA/
 
 # Reference PDFs (cited in paper — see references section)
 resources/*.pdf

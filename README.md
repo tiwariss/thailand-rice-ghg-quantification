@@ -24,21 +24,27 @@ This study applies IPCC 2006 Tier 1 at two scales — a national time series (19
 ## Repository Structure
 
 ```
-├── output/
-│   ├── paper.pdf                      # Full paper (22 pp.)
-│   ├── ghg_rice_thailand.py           # National time-series analysis (1961–2024)
-│   ├── ghg_spatial_analysis_v2.ipynb  # Provincial spatial analysis + Monte Carlo
-│   ├── thailand_rice_ghg_results.csv  # National emission results
-│   ├── thailand_rice_provincial.csv   # Provincial emission inventory (77 provinces)
-│   └── plot*.png                      # All figures
-├── resources/
-│   ├── FAOSTAT (2024).csv             # National harvested area & production
-│   ├── thailand_rice_provincial.csv   # OAE provincial data (parsed)
-│   ├── thailand_rice_price.csv        # Farm-gate price 2007–2024
-│   ├── oni_growing_season.csv         # ONI climate index
-│   ├── parse_rice_pdfs.py             # PDF parser for OAE data
-│   └── book1.csv / xlsx.xlsx          # Supporting data
-└── workflow/                          # Analysis workflow notes
+├── data/
+│   ├── raw/
+│   │   ├── faostat_thailand_rice_1961_2024.csv   # FAOSTAT national harvested area & production
+│   │   ├── oae_provincial_rice_2022_2024.csv     # OAE provincial data (parsed, 77 provinces)
+│   │   ├── thailand_rice_price.csv               # Farm-gate paddy price 2007–2024
+│   │   ├── oni_growing_season.csv                # NOAA ONI climate index (growing season)
+│   │   ├── oae_raw_data.csv                      # Raw OAE Thai-language data
+│   │   ├── oae_rice_price_variety.xlsx           # OAE rice variety price table
+│   │   └── gadm_THA/                             # GADM shapefiles (not in repo — download separately)
+│   └── processed/
+│       ├── thailand_rice_ghg_results.csv         # National CH4 inventory output
+│       └── thailand_rice_provincial_ghg.csv      # Provincial CH4 inventory output
+├── src/
+│   ├── ghg_rice_thailand.py                      # National time-series analysis (1961–2024)
+│   └── parse_rice_pdfs.py                        # PDF parser for OAE seasonal reports
+├── notebooks/
+│   └── ghg_spatial_analysis.ipynb               # Provincial spatial analysis + Monte Carlo
+├── figures/                                      # All output plots (PNG)
+├── paper/
+│   └── paper.pdf                                 # Full paper (22 pp.)
+└── workflow/                                     # Analysis workflow notes
 ```
 
 ---
@@ -91,17 +97,17 @@ pandas numpy matplotlib geopandas scipy statsmodels pdfplumber jupyter
 
 **National analysis:**
 ```bash
-python output/ghg_rice_thailand.py
+python src/ghg_rice_thailand.py
 ```
 
 **Provincial spatial analysis + Monte Carlo:**
 ```bash
-jupyter notebook output/ghg_spatial_analysis_v2.ipynb
+jupyter notebook notebooks/ghg_spatial_analysis.ipynb
 ```
 
 **Parse OAE PDF data:**
 ```bash
-python resources/parse_rice_pdfs.py
+python src/parse_rice_pdfs.py
 ```
 
 ---

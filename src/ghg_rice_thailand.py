@@ -30,7 +30,7 @@ GWP_CH4     = 28        # dimensionless (AR5; use 25 for AR4)
 # ─────────────────────────────────────────────────────────────
 # 2. LOAD & PARSE FAOSTAT CSV
 # ─────────────────────────────────────────────────────────────
-CSV_PATH = r"../resources/FAOSTAT_data_en_5-17-2026.csv"
+CSV_PATH = r"../data/raw/faostat_thailand_rice_1961_2024.csv"
 raw = pd.read_csv(CSV_PATH)
 
 # Keep only "Area harvested" rows (Element Code 5312)
@@ -103,8 +103,8 @@ out_cols = {
     "CO2e_Mt":  "CO2e_Emissions_Mt",
 }
 result_df = df[list(out_cols.keys())].rename(columns=out_cols)
-result_df.to_csv("thailand_rice_ghg_results.csv", index=False, float_format="%.4f")
-print("\n  Results saved → thailand_rice_ghg_results.csv")
+result_df.to_csv("../data/processed/thailand_rice_ghg_results.csv", index=False, float_format="%.4f")
+print("\n  Results saved → data/processed/thailand_rice_ghg_results.csv")
 
 # ─────────────────────────────────────────────────────────────
 # 6. PLOTS
