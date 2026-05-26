@@ -42,8 +42,13 @@ resources/gadm41_THA_shp.zip
 data/raw/gadm_THA/
 
 # Reference PDFs (cited in paper — see references section)
+resources/**/*.pdf
+resources/**/*.html
 resources/*.pdf
 resources/*.html
+
+# Stale output files
+output/thailand_rice_provincial.csv
 
 # AI workspace config
 CLAUDE.md
