@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.ipynb_checkpoints/
+*.egg-info/
+dist/
+build/
+.env
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+
+# Large data files (excluded from git — download separately)
+resources/psd_alldata_csv/
+resources/gadm_THA/
+resources/gadm41_THA_shp.zip
